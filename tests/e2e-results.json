@@ -1,0 +1,36 @@
+{
+  "environment": {
+    "astrbot_version": "4.28.2",
+    "installation": "isolated editable local plugin installation",
+    "chat_model": "gpt-4.1-mini through the generic OpenAI-compatible source",
+    "marketplace_installation": "not tested; AstrBot Cloud listing pending"
+  },
+  "primary_case": {
+    "model": "happyhorse-1.1-t2v",
+    "action": "generate",
+    "duration_requested": 3,
+    "resolution_requested": "720P",
+    "ratio_requested": "16:9",
+    "generation_tool": "happyhorse_generate_video",
+    "generation_tool_calls": 1,
+    "lookup_tool": "happyhorse_get_task",
+    "lookup_tool_calls_in_chat": 1,
+    "task_id": "c96a2761-d751-4617-b4fa-25acbe8376d2",
+    "trace_id": "a8522db5-a7b1-49d8-b1e1-ed4aaa64788e",
+    "terminal_status": "succeeded",
+    "video_count": 1,
+    "video_url": "https://platform2.cdn.acedata.cloud/happyhorse/c96a2761-d751-4617-b4fa-25acbe8376d2.mp4",
+    "media_http_status": 200,
+    "media_content_type": "video/mp4",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "video_width": 1280,
+    "video_height": 720,
+    "duration_seconds": 3.163,
+    "usage_api_path": "/happyhorse/videos",
+    "usage_status_code": 200,
+    "task_list_amount_credits": 3.3,
+    "usage_deducted_credits": 2.97
+  },
+  "scope_limit": "Text-to-video and same-task lookup were run through AstrBot chat. Image-to-video, other models, durations, and resolutions were validated structurally but not generated. Official market installation remains open."
+}
