@@ -2,7 +2,7 @@
 
 Generate one Happy Horse video in an AstrBot conversation through your own Ace Data Cloud account. `happyhorse_generate_video` submits one text or first-frame image video job; `happyhorse_get_task` queries the same task until its final video is ready.
 
-[简体中文指南](readme/README_zh_Hans.md) · [Happy Horse Videos API](https://platform.acedata.cloud/documents/happyhorse-videos) · [Happy Horse Tasks API](https://platform.acedata.cloud/documents/happyhorse-tasks) · [Current prices](https://platform.acedata.cloud/services/happyhorse)
+[简体中文指南](readme/README_zh_Hans.md) · [Happy Horse Videos API](https://platform.acedata.cloud/documents/happyhorse-videos?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=happyhorseastrbot_readme_documents_happyhorse_videos) · [Happy Horse Tasks API](https://platform.acedata.cloud/documents/happyhorse-tasks?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=happyhorseastrbot_readme_documents_happyhorse_tasks) · [Current prices](https://platform.acedata.cloud/services/happyhorse?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=happyhorseastrbot_readme_services_happyhorse)
 
 ## Find and install
 
@@ -12,7 +12,9 @@ The official AstrBot Cloud listing is pending. After the source release is merge
 
 ## Configure your key
 
-In [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications), copy a generation API key from your General application or create a key that permits both `/happyhorse/videos` and `/happyhorse/tasks`. Check current per-second pricing, duration, resolution, and balance before submitting. Paste the key into the plugin's **Ace Data Cloud generation API key with Happy Horse access** setting. Do not add `Bearer ` or use a `platform-...` management token. AstrBot masks the field in WebUI but stores the original value in its data directory, which should be protected.
+New account? Register and sign in first. If the Applications page has no General application yet, choose **Initialize General Application**, then continue with the key steps below.
+
+In [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=happyhorseastrbot_readme_api_key), copy a generation API key from your General application or create a key that permits both `/happyhorse/videos` and `/happyhorse/tasks`. Check current per-second pricing, duration, resolution, and balance before submitting. Paste the key into the plugin's **Ace Data Cloud generation API key with Happy Horse access** setting. Do not add `Bearer ` or use a `platform-...` management token. AstrBot masks the field in WebUI but stores the original value in its data directory, which should be protected.
 
 Select a chat model that supports tool calling. Allow both Happy Horse tools in the conversation's profile and persona.
 
