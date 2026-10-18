@@ -1,13 +1,16 @@
 name: astrbot_plugin_happyhorse_acedatacloud
 display_name: Happy Horse by Ace Data Cloud
-short_desc: Generate one Happy Horse video and retrieve its final result in chat.
-desc: Submit one Happy Horse text or first-frame video through your Ace Data Cloud account, then query the same task ID for its final URL.
-version: 0.1.0
+short_desc: Happy Horse text/image video generation and same-task retrieval through Ace Data Cloud.
+desc: >-
+  Happy Horse text/image video generation and same-task retrieval through Ace Data Cloud. Install this Ace Data Cloud integration, configure your own API key, and use /happyhorse_ace for setup or the administrator-only /happyhorse_ace_task for an existing task. Not an official Happy Horse publisher plugin.
+version: 0.1.1
 author: acedatacloud
 repo: https://github.com/AceDataCloud/HappyHorseAstrBot
 astrbot_version: ">=4.28.2,<5"
 tags:
   - Happy Horse
+  - HappyHorse
   - AI video
-  - video generation
+  - image to video
+  - 视频生成
   - Ace Data Cloud

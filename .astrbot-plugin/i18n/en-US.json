@@ -1,0 +1,13 @@
+{
+  "metadata": {
+    "display_name": "Happy Horse by Ace Data Cloud",
+    "short_desc": "Happy Horse text/image video generation and same-task retrieval through Ace Data Cloud.",
+    "desc": "Happy Horse text/image video generation and same-task retrieval through Ace Data Cloud. Configure your own Ace API key. /happyhorse_ace shows help; administrators use /happyhorse_ace_task for an existing task. This integration is provided by Ace Data Cloud."
+  },
+  "config": {
+    "api_key": {
+      "description": "Ace Data Cloud API Key for Happy Horse",
+      "hint": "Copy/create a dedicated key in Ace Applications → General application → Manage Keys. Allow /happyhorse/videos and /happyhorse/tasks. No Bearer prefix; never paste into chat. Masking does not encrypt the data directory."
+    }
+  }
+}
