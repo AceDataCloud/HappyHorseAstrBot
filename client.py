@@ -67,7 +67,7 @@ class HappyHorseClient:
                 "Authorization": "Bearer " + self._api_key,
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "User-Agent": "AceDataCloudAstrBot/0.1.0",
+                "User-Agent": "AceDataCloudAstrBot/0.1.1",
             },
             method="POST",
         )
@@ -186,7 +186,15 @@ class HappyHorseClient:
             for item in items
             if isinstance(item, dict)
         }
-        if response.get("success") is False or response.get("error") or states & FAILED:
+        response_state = str(
+            response.get("state") or response.get("status") or ""
+        ).lower()
+        if (
+            response_state in FAILED
+            or response.get("success") is False
+            or response.get("error")
+            or states & FAILED
+        ):
             return {
                 "task_id": task_id,
                 "trace_id": trace_id,

@@ -2,19 +2,54 @@
 
 通过您自己的 Ace Data Cloud 账号，在 AstrBot 对话中生成一条 Happy Horse 视频。`happyhorse_generate_video` 提交一次文生或首帧图生视频任务，`happyhorse_get_task` 用同一个任务 ID 查询最终结果。
 
-[English guide](../README.md) · [视频接口](https://platform.acedata.cloud/documents/happyhorse-videos) · [任务接口](https://platform.acedata.cloud/documents/happyhorse-tasks) · [当前价格](https://platform.acedata.cloud/services/happyhorse)
+**本 PR 的目标版本为 0.1.1**：新增原生帮助及管理员查询指令、双语配置和图文说明。合并和市场发布前，当前 0.1.0 安装不会自动获得这些入口。
+
+这是 **Ace Data Cloud 提供的 Happy Horse 独立集成**，不是 Happy Horse 厂商或 AstrBot 团队的官方插件。使用自己的 Ace 账号和 API Key；不要填写其他平台的密钥。
+
+[English guide](../README.md) · [视频接口](https://platform.acedata.cloud/documents/happyhorse-videos?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=happyhorseastrbot_readme_documents_happyhorse_videos) · [任务接口](https://platform.acedata.cloud/documents/happyhorse-tasks?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=happyhorseastrbot_readme_documents_happyhorse_tasks) · [当前价格](https://platform.acedata.cloud/services/happyhorse?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=happyhorseastrbot_readme_services_happyhorse)
 
 ## 查找与安装
 
-在 AstrBot WebUI 中打开 **扩展 → 插件 → AstrBot 插件市场**，搜索 **Happy Horse**。核对卡片名称 **Happy Horse by Ace Data Cloud**、作者 **acedatacloud** 和[当前服务图标](https://cdn.acedata.cloud/e58fce2811.jpg)，安装后在**已安装**页检查加载状态。
+当前上游文档（2026-10-18）：侧栏 **插件 → 顶部插件 → 插件市场 / 已安装**；旧 4.28.2 英文界面可能显示 Extensions。插件参数在已安装卡片齿轮里设置，**不要把服务插件 Key 填进模型提供商**。
+
+**发布状态（2026-10-18）：尚未在官方市场上架。** 正式发布后，先打开 [AstrBot Cloud 插件市场](https://cloud.astrbot.app/market)，搜索 **Happy Horse**，再核对 **Happy Horse by Ace Data Cloud / acedatacloud**。当前请用下面的 Git 仓地址手动安装；不要把仓库安装说成官方市场收录。
 
 官方 AstrBot Cloud 上架仍待完成。源码合并后，可通过**已安装 → 安装 (+) → 从 URL 安装**并填写 `https://github.com/AceDataCloud/HappyHorseAstrBot` 预览。通过 URL 安装不代表已在官方市场上架。
 
 ## 配置密钥
 
-在 [Ace Data Cloud 应用管理](https://platform.acedata.cloud/console/applications)复制生成 API Key，或创建同时允许 `/happyhorse/videos` 与 `/happyhorse/tasks` 的 Key。提交前核对当前每秒价格、时长、分辨率和余额。将 Key 填入插件的 **Ace Data Cloud generation API key with Happy Horse access** 配置项，不要添加 `Bearer `，也不要使用 `platform-...` 管理令牌。AstrBot WebUI 会遮蔽显示此字段，但原值保存在数据目录中，请保护该目录。
+先[注册或登录 Ace](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=happyhorseastrbot_readme_signup)；首次没有通用应用时，先初始化 **General application**。下图取自同一 Ace 应用管理页面，不是 AstrBot 界面。
+
+在 [Ace Data Cloud 应用管理](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=happyhorseastrbot_readme_api_key)复制生成 API Key，或创建同时允许 `/happyhorse/videos` 与 `/happyhorse/tasks` 的 Key。提交前核对当前每秒价格、时长、分辨率和余额。将 Key 填入插件的 **Ace Data Cloud generation API key with Happy Horse access** 配置项，不要添加 `Bearer `，也不要使用 `platform-...` 管理令牌。AstrBot WebUI 会遮蔽显示此字段，但原值保存在数据目录中，请保护该目录。
 
 选择支持工具调用的对话模型，并在当前对话的 profile 与 persona 中允许两个 Happy Horse 工具。
+
+1. 打开 **General application**，用图中 **1** 复制现有 Key，或点 **2 Manage Keys → Create** 创建专用 Key。
+
+![复制 Ace Key 或管理专用 Key（已脱敏）](../_assets/tutorial/get-api-key-en.png)
+
+2. 可把名称设为 `AstrBot Happy Horse`，按需要设置到期/限额；Allowed APIs 同时包含 `/happyhorse/videos` 和 `/happyhorse/tasks`。截图的 Dify tutorial 只是旧示例名称。
+
+![创建专用 Key（共享 Ace 页面，非 AstrBot）](../_assets/tutorial/create-api-key-en.png)
+
+图片于 2026-10-18 复用核验，原始拍摄日期未提供；凭据与余额已脱敏。 [来源和版本边界](../_assets/tutorial/sources.json)。
+
+### 在 AstrBot 粘贴的位置
+
+打开 **插件 → 插件 → 已安装**，点击 **Happy Horse by Ace Data Cloud** 卡片齿轮，把 Key 填入 **Ace Data Cloud generation API key with Happy Horse access**（保存字段为 `api_key`）并保存。不要填 `Bearer `；也不要在聊天里输入 Key。
+
+![AstrBot 官方历史插件配置参考，非本插件运行截图](../_assets/tutorial/astrbot-plugin-config-reference.png)
+
+此图是 AstrBot 官方 `helloworld` 配置示例，界面标签 v3.4.14（构建 v3.4.9），不是 Ace 配置或运行证明。上方说明给出了本插件的准确字段和当前菜单；新版本布局可能不同。
+
+## 无需聊天模型的原生指令
+
+| 输入 | 作用 |
+| --- | --- |
+| `/happyhorse_ace` | 显示本服务、Token 配置和查询用法，不请求外部 API。 |
+| `/happyhorse_ace_task <task_id>` | 仅 AstrBot 管理员：查询一个已有任务，返回状态与最终媒体，不调用 LLM 或生成。 |
+
+指令采用默认 `/` 前缀；自定义唤醒前缀时相应替换。管理员身份由 AstrBot 判断；同一实例的插件 Key 是共享配置，因此查询指令默认限管理员。其他用户继续使用受当前人格/配置允许的 Agent 工具。`pending` 时稍后只查同一编号，`failed` 时按原 task/trace 排查。
 
 ## 生成一次，然后查询
 
@@ -31,6 +66,10 @@
 文生视频可用 `happyhorse-1.0-t2v` 或 `happyhorse-1.1-t2v`。要让您有权处理的图片动起来，传入公开的 HTTPS `image_url` 并明确选择 `happyhorse-1.0-i2v` 或 `happyhorse-1.1-i2v`；插件不会自行切换模型。支持 3–15 秒，分辨率为 `720P` 或 `1080P`。首版固定 `watermark=false`，只支持一张首帧图片；多图参考生成与视频编辑暂未覆盖。
 
 ## 核验与排查
+
+### 任务取消与本地中断
+
+任务明确 failed/cancelled/rejected 时视为终态：即使 `finished_at` 尚未填入，也返回 `status: failed`、`success: false`，不显示媒体、不重新提交。本地取消聊天或指令只中断等待，**不会取消服务端生成**，已开始的 HTTP 请求仍可能完成。保留原 task ID 并查请求历史；本插件没有服务端取消任务指令。
 
 在 Ace Data Cloud 用量记录中优先按返回的 trace ID 核对。任务结果可能包含以 Credits 计的公开 `cost` 字段；以实时用量记录为扣费依据。任务查询只读取已有任务，不会再次生成。
 
@@ -50,3 +89,18 @@ Key 只会发送到 `https://api.acedata.cloud`，重定向会被拒绝。插件
 在官方 AstrBot `v4.28.2` 的隔离实例中，editable 安装成功注册两个工具。ChatUI 用 `happyhorse-1.1-t2v`、3 秒、720P 提交了一次视频任务，并查询同一个 ID 一次，没有重复生成。最终 MP4 返回 HTTP 200、`video/mp4`，H.264 视频和 AAC 音频，1280×720、3.163 秒。准确 trace ID 对应一条成功的 `/happyhorse/videos` 用量记录，实扣 2.97 Credits；任务返回原价 3.3 Credits。见[脱敏实测证据](../tests/e2e-results.json)。图生视频及其他模型和设置仅做结构校验，未实际生成。这只是本地 editable 安装；Cloud 审核、市场安装以及市场包的首次调用仍待完成。
 
 `logo.png` 是[当前 Happy Horse 服务图标](https://cdn.acedata.cloud/e58fce2811.jpg)不改变画面的 PNG 编码，447×447。源 JPEG 的 SHA-256 为 `58c5821d63219093ca86d5780231612218c472d66f8a66a59131a873fc736d0f`；打包 PNG 的 SHA-256 为 `28d49c107808fe2a5779b56338f53df947ad6c2335755aaae5c483540ee3a4d1`。
+
+## 复现免费宿主检查
+
+在本仓库中使用独立 Python 3.12 环境：
+
+```bash
+uv venv --python 3.12 .venv-host
+uv pip install --python .venv-host/bin/python astrbot==4.29.0
+.venv-host/bin/python scripts/verify_host.py
+```
+
+无需 API Key，不启动服务。检查导入真实 AstrBot 装饰器、注册两个指令/两个工具，
+验证管理员允许/非管理员拒绝、Key 遮罩 schema、空 Key 错误与取消传播，并阻止 socket 连接。
+事件和取消为测试替身，不能据此声称完整消息分发、官方市场安装、真实生成、任务归属、
+新账单或注册转化已验。传输和指令回归使用常规 `python -m pytest -q`。
