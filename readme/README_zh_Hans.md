@@ -67,6 +67,10 @@
 
 ## 核验与排查
 
+### 任务取消与本地中断
+
+任务明确 failed/cancelled/rejected 时视为终态：即使 `finished_at` 尚未填入，也返回 `status: failed`、`success: false`，不显示媒体、不重新提交。本地取消聊天或指令只中断等待，**不会取消服务端生成**，已开始的 HTTP 请求仍可能完成。保留原 task ID 并查请求历史；本插件没有服务端取消任务指令。
+
 在 Ace Data Cloud 用量记录中优先按返回的 trace ID 核对。任务结果可能包含以 Credits 计的公开 `cost` 字段；以实时用量记录为扣费依据。任务查询只读取已有任务，不会再次生成。
 
 | 现象 | 检查 |
@@ -85,3 +89,18 @@ Key 只会发送到 `https://api.acedata.cloud`，重定向会被拒绝。插件
 在官方 AstrBot `v4.28.2` 的隔离实例中，editable 安装成功注册两个工具。ChatUI 用 `happyhorse-1.1-t2v`、3 秒、720P 提交了一次视频任务，并查询同一个 ID 一次，没有重复生成。最终 MP4 返回 HTTP 200、`video/mp4`，H.264 视频和 AAC 音频，1280×720、3.163 秒。准确 trace ID 对应一条成功的 `/happyhorse/videos` 用量记录，实扣 2.97 Credits；任务返回原价 3.3 Credits。见[脱敏实测证据](../tests/e2e-results.json)。图生视频及其他模型和设置仅做结构校验，未实际生成。这只是本地 editable 安装；Cloud 审核、市场安装以及市场包的首次调用仍待完成。
 
 `logo.png` 是[当前 Happy Horse 服务图标](https://cdn.acedata.cloud/e58fce2811.jpg)不改变画面的 PNG 编码，447×447。源 JPEG 的 SHA-256 为 `58c5821d63219093ca86d5780231612218c472d66f8a66a59131a873fc736d0f`；打包 PNG 的 SHA-256 为 `28d49c107808fe2a5779b56338f53df947ad6c2335755aaae5c483540ee3a4d1`。
+
+## 复现免费宿主检查
+
+在本仓库中使用独立 Python 3.12 环境：
+
+```bash
+uv venv --python 3.12 .venv-host
+uv pip install --python .venv-host/bin/python astrbot==4.29.0
+.venv-host/bin/python scripts/verify_host.py
+```
+
+无需 API Key，不启动服务。检查导入真实 AstrBot 装饰器、注册两个指令/两个工具，
+验证管理员允许/非管理员拒绝、Key 遮罩 schema、空 Key 错误与取消传播，并阻止 socket 连接。
+事件和取消为测试替身，不能据此声称完整消息分发、官方市场安装、真实生成、任务归属、
+新账单或注册转化已验。传输和指令回归使用常规 `python -m pytest -q`。

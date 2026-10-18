@@ -67,6 +67,10 @@ Text video uses `happyhorse-1.0-t2v` or `happyhorse-1.1-t2v`. To animate an imag
 
 ## Verify and troubleshoot
 
+### Cancelled tasks and interrupted waiting
+
+An explicit failed/cancelled/rejected task is terminal: the plugin returns `status: failed`, `success: false` and no media, even if `finished_at` is still empty. It does not resubmit. Cancelling a local chat/command stops waiting locally; it does **not** cancel an upstream generation, and an already-started HTTP request may still finish. Inspect the original task/history and keep the same ID; there is no upstream-cancel command in this plugin.
+
 Match a returned trace ID in Ace Data Cloud usage when available. A finished task may include public `cost` amounts in Credits; confirm the live usage row before treating an estimate as a charge. Task lookup reads an existing job and does not submit another generation.
 
 | Symptom | Check |
@@ -85,3 +89,21 @@ The key goes only to `https://api.acedata.cloud`; redirects are rejected. The pl
 On official AstrBot `v4.28.2`, an isolated editable installation registered both tools. ChatUI submitted one `happyhorse-1.1-t2v` 3-second 720P video and queried the same task ID once, with no second generation. The final MP4 responded HTTP 200, `video/mp4`, and decoded as H.264 video with AAC audio, 1280×720, 3.163 seconds. The exact generation trace matched one successful `/happyhorse/videos` usage row with 2.97 Credits deducted; the task returned 3.3 Credits as its list amount. See the [sanitized evidence](tests/e2e-results.json). Image-to-video and other models and settings were validated structurally but not generated. This is a local editable installation; official Cloud review, market installation, and a first call from a market installation remain open.
 
 `logo.png` is a PNG encoding of the unmodified 447×447 [current Happy Horse service icon](https://cdn.acedata.cloud/e58fce2811.jpg). Source JPEG SHA-256: `58c5821d63219093ca86d5780231612218c472d66f8a66a59131a873fc736d0f`; packaged PNG SHA-256: `28d49c107808fe2a5779b56338f53df947ad6c2335755aaae5c483540ee3a4d1`.
+
+## Reproduce the no-cost host check
+
+From this repository in an isolated Python 3.12 environment:
+
+```bash
+uv venv --python 3.12 .venv-host
+uv pip install --python .venv-host/bin/python astrbot==4.29.0
+.venv-host/bin/python scripts/verify_host.py
+```
+
+The check needs no API Key and starts no server. It imports real AstrBot
+decorators, registers both commands/two tools, checks admin/non-admin access,
+masked-key schema, missing-Key handling and cancellation propagation with
+socket access blocked. Fake events and mocked cancellation do not establish
+a full message-dispatcher, market install, live generation, task ownership,
+new billing or signup/conversion result. Use normal `python -m pytest -q`
+for transport and command regression tests.
