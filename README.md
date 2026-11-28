@@ -6,7 +6,7 @@ Generate one Happy Horse video in an AstrBot conversation through your own Ace D
 
 This independent **Happy Horse integration is provided by Ace Data Cloud**. It is not an official plugin from the Happy Horse publisher or the AstrBot team. Use your own Ace account and API key.
 
-[简体中文指南](readme/README_zh_Hans.md) · [Happy Horse Videos API](https://platform.acedata.cloud/documents/happyhorse-videos?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) · [Happy Horse Tasks API](https://platform.acedata.cloud/documents/happyhorse-tasks?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) · [Current prices](https://platform.acedata.cloud/services/happyhorse?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)
+[简体中文指南](readme/README_zh_Hans.md) · [Happy Horse Videos API](https://platform.acedata.cloud/documents/happyhorse-videos?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen) · [Happy Horse Tasks API](https://platform.acedata.cloud/documents/happyhorse-tasks?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen) · [Current prices](https://platform.acedata.cloud/services/happyhorse?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen)
 
 ## Find and install
 
@@ -18,9 +18,9 @@ The official AstrBot Cloud listing is pending. The source release is merged; **P
 
 ## Configure your key
 
-[Register or sign in to Ace](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) first. Initialize **General application** if it does not exist. The following images show the shared Ace Applications page, not AstrBot.
+[Register or sign in to Ace](https://platform.acedata.cloud/console/applications?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen) first. Initialize **General application** if it does not exist. The following images show the shared Ace Applications page, not AstrBot.
 
-In [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen), copy a generation API key from your General application or create a key that permits both `/happyhorse/videos` and `/happyhorse/tasks`. Check current per-second pricing, duration, resolution, and balance before submitting. Paste the key into the plugin's **Ace Data Cloud generation API key with Happy Horse access** setting. Do not add `Bearer ` or use a `platform-...` management token. AstrBot masks the field in WebUI but stores the original value in its data directory, which should be protected.
+In [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen), copy a generation API key from your General application or create a key that permits both `/happyhorse/videos` and `/happyhorse/tasks`. Check current per-second pricing, duration, resolution, and balance before submitting. Paste the key into the plugin's **Ace Data Cloud generation API key with Happy Horse access** setting. Do not add `Bearer ` or use a `platform-...` management token. AstrBot masks the field in WebUI but stores the original value in its data directory, which should be protected.
 
 For Agent-tool use, select a chat model that supports tool calling. Allow both Happy Horse tools in the conversation's profile and persona.
 
@@ -36,7 +36,7 @@ Images reused and checked on 2026-10-18; original capture dates were not supplie
 
 ### Where to paste it in AstrBot
 
-Open **Plugins → Plugins → Installed**, select the gear on **Happy Horse by Ace Data Cloud**, paste the key into **Ace Data Cloud generation API key with Happy Horse access** (stored as `api_key`), and save. No `Bearer ` prefix; never paste the key in chat.
+Open **Plugins → Plugins → Installed**, select the gear on **Happy Horse**, paste the key into **Ace Data Cloud generation API key with Happy Horse access** (stored as `api_key`), and save. No `Bearer ` prefix; never paste the key in chat.
 
 ![AstrBot official historical plugin configuration reference, not this plugin running](_assets/tutorial/astrbot-plugin-config-reference.png)
 
