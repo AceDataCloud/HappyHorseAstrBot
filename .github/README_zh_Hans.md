@@ -38,7 +38,7 @@
 
 ### 在 AstrBot 粘贴的位置
 
-打开 **插件 → 插件 → 已安装**，点击 **Happy Horse by Ace Data Cloud** 卡片齿轮，把 Key 填入 **Ace Data Cloud generation API key with Happy Horse access**（保存字段为 `api_key`）并保存。不要填 `Bearer `；也不要在聊天里输入 Key。
+打开 **插件 → 插件 → 已安装**，点击 **Happy Horse** 卡片齿轮，把 Key 填入 **Ace Data Cloud generation API key with Happy Horse access**（保存字段为 `api_key`）并保存。不要填 `Bearer `；也不要在聊天里输入 Key。
 
 ![AstrBot 官方历史插件配置参考，非本插件运行截图](../_assets/tutorial/astrbot-plugin-config-reference.png)
 

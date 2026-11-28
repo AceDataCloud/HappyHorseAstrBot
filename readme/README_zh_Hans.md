@@ -6,7 +6,7 @@
 
 这是 **Ace Data Cloud 提供的 Happy Horse 独立集成**，不是 Happy Horse 厂商或 AstrBot 团队的官方插件。使用自己的 Ace 账号和 API Key；不要填写其他平台的密钥。
 
-[English guide](../README.md) · [视频接口](https://platform.acedata.cloud/documents/happyhorse-videos?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) · [任务接口](https://platform.acedata.cloud/documents/happyhorse-tasks?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) · [当前价格](https://platform.acedata.cloud/services/happyhorse?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)
+[English guide](../README.md) · [视频接口](https://platform.acedata.cloud/documents/happyhorse-videos?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen) · [任务接口](https://platform.acedata.cloud/documents/happyhorse-tasks?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen) · [当前价格](https://platform.acedata.cloud/services/happyhorse?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen)
 
 ## 查找与安装
 
@@ -18,9 +18,9 @@
 
 ## 配置密钥
 
-先[注册或登录 Ace](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)；首次没有通用应用时，先初始化 **General application**。下图取自同一 Ace 应用管理页面，不是 AstrBot 界面。
+先[注册或登录 Ace](https://platform.acedata.cloud/console/applications?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen)；首次没有通用应用时，先初始化 **General application**。下图取自同一 Ace 应用管理页面，不是 AstrBot 界面。
 
-在 [Ace Data Cloud 应用管理](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)复制生成 API Key，或创建同时允许 `/happyhorse/videos` 与 `/happyhorse/tasks` 的 Key。提交前核对当前每秒价格、时长、分辨率和余额。将 Key 填入插件的 **Ace Data Cloud generation API key with Happy Horse access** 配置项，不要添加 `Bearer `，也不要使用 `platform-...` 管理令牌。AstrBot WebUI 会遮蔽显示此字段，但原值保存在数据目录中，请保护该目录。
+在 [Ace Data Cloud 应用管理](https://platform.acedata.cloud/console/applications?utm_source=astrbot&utm_medium=referral&utm_campaign=evergreen)复制生成 API Key，或创建同时允许 `/happyhorse/videos` 与 `/happyhorse/tasks` 的 Key。提交前核对当前每秒价格、时长、分辨率和余额。将 Key 填入插件的 **Ace Data Cloud generation API key with Happy Horse access** 配置项，不要添加 `Bearer `，也不要使用 `platform-...` 管理令牌。AstrBot WebUI 会遮蔽显示此字段，但原值保存在数据目录中，请保护该目录。
 
 选择支持工具调用的对话模型，并在当前对话的 profile 与 persona 中允许两个 Happy Horse 工具。
 
@@ -36,7 +36,7 @@
 
 ### 在 AstrBot 粘贴的位置
 
-打开 **插件 → 插件 → 已安装**，点击 **Happy Horse by Ace Data Cloud** 卡片齿轮，把 Key 填入 **Ace Data Cloud generation API key with Happy Horse access**（保存字段为 `api_key`）并保存。不要填 `Bearer `；也不要在聊天里输入 Key。
+打开 **插件 → 插件 → 已安装**，点击 **Happy Horse** 卡片齿轮，把 Key 填入 **Ace Data Cloud generation API key with Happy Horse access**（保存字段为 `api_key`）并保存。不要填 `Bearer `；也不要在聊天里输入 Key。
 
 ![AstrBot 官方历史插件配置参考，非本插件运行截图](../_assets/tutorial/astrbot-plugin-config-reference.png)
 

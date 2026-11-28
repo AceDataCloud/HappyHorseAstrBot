@@ -38,7 +38,7 @@ Images reused and checked on 2026-10-18; original capture dates were not supplie
 
 ### Where to paste it in AstrBot
 
-Open **Plugins → Plugins → Installed**, select the gear on **Happy Horse by Ace Data Cloud**, paste the key into **Ace Data Cloud generation API key with Happy Horse access** (stored as `api_key`), and save. No `Bearer ` prefix; never paste the key in chat.
+Open **Plugins → Plugins → Installed**, select the gear on **Happy Horse**, paste the key into **Ace Data Cloud generation API key with Happy Horse access** (stored as `api_key`), and save. No `Bearer ` prefix; never paste the key in chat.
 
 ![AstrBot official historical plugin configuration reference, not this plugin running](../_assets/tutorial/astrbot-plugin-config-reference.png)
 
